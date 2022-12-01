@@ -1,0 +1,126 @@
+body {
+    main {
+        .frase {
+            width: 100%;
+            height: 13rem;
+            background-image: linear-gradient(rgba(51, 55, 60, 0.484), rgba(15, 15, 15, 0.5)), url("https://cdn.pixabay.com/photo/2018/11/17/22/15/trees-3822149_960_720.jpg");
+            @include display-flex(column, center, center);
+            h1 {
+                font-size: x-large;
+                color: $color-default;
+            }
+            h2 {
+                font-size: medium;
+                font-weight: lighter;
+                color: $color-default;
+            }
+        }
+        .pasos {
+            width: 100%;
+            height: 22rem;
+            h3 {
+                font-size: large;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 2rem 0;
+            }
+            .pasos-compra {
+                @include display-flex(row, space-around, center);
+                div {
+                    width: 28rem;
+                    height: 14rem;
+                    @include display-flex(column, center, center);
+                    border-radius: 15px;
+                    background-color: #fff;
+                    p:first-of-type {
+                        font-size: large;
+                        font-weight: 600;
+                        font-weight: 700;
+                    }
+                    p {
+                        font-size: medium;
+                        padding: 0.5rem;
+                    }
+                    p:last-of-type {
+                        font-size: small;
+                        text-align: center;
+                        color: rgba(77, 77, 77, 0.96);
+                        padding: 0 2.5rem;
+                    }
+                    i {
+                        font-size: x-large;
+                        color: $color-principal;
+                        padding: 0.8rem;                        
+                        width: 5.1rem;
+                        height: 5.1rem;
+                        @include display-flex(column, center, center);
+                        border-radius: 50%;
+                        background-color: #76c89330;
+                    }
+                }
+            }
+        }
+    }
+    .section-filtrar {
+        width: 30rem;
+        padding: 3rem 5rem 0 5rem;
+        .filtrar {
+            h2 {
+                font-size: 2rem;
+                padding: 0.5rem;
+            }
+            p {
+                text-transform: capitalize;
+                font-weight: 700;
+                font-size: 1.5rem;
+                padding: 0.5rem;
+            }
+            .f-marca {
+                div {
+                    @include display-flex(row, start, center);
+                    padding-left: 2rem;
+                    label {
+                        padding: 0.5rem;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            .f-precio {
+                div {
+                    @include display-flex(column, center, start);
+                    padding: 0.3rem 0 0.3rem 2rem;
+                    label {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            .f-cantidad {
+                div {
+                    @include display-flex(row, start, center);
+                    padding-left: 2rem;
+                    label {
+                        padding: 0.5rem;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+            #btn-sin-filtros {
+                width: 15rem;
+                height: 3rem;
+                font-weight: 600;
+                margin: 2rem;
+                color: $color-secundario;
+                background-color: #5de78ec9;
+                border: none;
+                box-shadow: 1.5px 1.5px 2.8px #0000006b;
+            }
+            h3 {
+                font-size: 1.5rem;
+                padding: 0.5rem;
+            }
+            
+            
+        }
+    }
+}
+// box-shadow: 3px 5px 12px #000; para productos

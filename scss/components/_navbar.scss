@@ -1,0 +1,63 @@
+body {
+    header {
+            width: 100%;
+            height: 10rem;
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 10rem;
+            background-color: $color-principal;
+            padding: 0 2rem;
+            box-shadow: 3px 1px 12px 8px #00000030;
+            @include display-flex(row, space-between, center);
+            .logo {
+                font-size: 3rem;
+                font-weight: 700;
+                color: $color-secundario;
+            }
+            .box-search {
+                width: 65rem;
+                height: 4rem;
+                border-radius: 2.5rem;
+                @include display-flex(row, start, center);
+                background-color: $color-default;
+                i {
+                    font-size: 1.8rem;
+                    padding: 0 2rem;
+                }
+                #search {
+                    height: 2.5rem;
+                    width: 80%;
+                    font-size: 2rem;
+                    border: none;
+        
+                }
+                #search:focus {
+                    outline: none;
+                  }
+            }
+            .icons {
+                width: auto;
+                height: auto;
+                @include display-flex(row, center, center);
+                li {
+                    a{
+                        i {
+                            color: $color-secundario;
+                            font-size: 2.3rem;
+                            padding-left: 2rem ;
+                        }
+                        i:hover {
+                            color: white;
+                        }
+                    }
+                }
+        
+            }
+        
+        }
+    }
+}

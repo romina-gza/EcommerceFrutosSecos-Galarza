@@ -1,0 +1,86 @@
+@mixin display-flex($flex-direction, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+@mixin display-grid(
+  $grid-template-columns,
+  $grid-template-rows,
+  $column-gap,
+  $row-gap
+) {
+  display: grid;
+  grid-template-columns: $grid-template-columns;
+  grid-template-rows: $grid-template-rows;
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+}
+
+@mixin heading-tag-h1 {
+  // font-family: $font-family-principal;
+  font-size: 3rem;
+  color: $color-secundario;
+}
+// @mixin heading-tag-h2 {
+//   font-family: $font-family-principal;
+//   font-size: 2rem;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   text-align: center;
+//   margin: 3rem 0;
+// }
+// @mixin heading-tag-h3 {
+//   font-family: $font-family-principal;
+//   font-size: 1.7rem;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   text-align: center;
+//   margin-bottom: 1rem;
+// }
+// @mixin etiqueta-a {
+//   text-decoration: none;
+// }
+// @mixin parrafo {
+//   font-family: $font-family-principal;
+//   font-weight: 600;
+//   font-size: 1.2rem;
+//   color: black;
+// }
+// //Cambia el fondo de imagen de cada h1 en la paginas excepto Inicio
+// @mixin fondos-principales {
+//   @each $pagina,
+//     $fondo-img
+//       in (
+//         nosotros: $fondo-nosotros,
+//         pack-friends: $fondo-pack-friends,
+//         tour-en-autobus: $fondo-tours-en-autobus,
+//         conoce-argentina: $fondo-conoce-argentina,
+//         contactanos: $fondo-contactanos
+//       )
+//   {
+//     .#{$pagina}-fondo-img {
+//       background-image: $fondo-img;
+//       width: 100%;
+//       height: 15rem;
+//       background-size: cover;
+//       background-repeat: no-repeat;
+//       background-position: 100% 40%;
+//       @include display-flex(row, center, center);
+//     }
+//   }
+// }
+
+// @mixin iconos-redes($color) {
+//   a {
+//     display: inline;
+//     i {
+//       color: $color;
+//       margin: 0 1rem;
+//       font-size: 2rem;
+//     }
+//     i:hover {
+//       color: $background-principal;
+//     }
+//   }
+// }

@@ -4,16 +4,151 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <title>La Arboleda</title>
+    
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://kit.fontawesome.com/a5e24d0a3e.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;900&amp;display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <h1>Helloo</h1>
+    <header>
+      <nav class="menu">
+        <a href="#" class="logo">
+          La Arboleda
+        </a>  
+        <div class="box-search">
+          <label for="search" class="icon-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </label>
+          <input type="text" id="search" placeholder="Buscar...">
+        </div>        
+        <ul class="icons"> 
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-truck-fast"></i>
+            </a>
+          </li>         
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+          </li>
+        </ul>         
+      </nav>
+      </header>
 
-    </main>
+      <main>
+        <div class="frase">
+          <h1>La Arboleda</h1>
+          <h2>Un lugar con más que frutos secos</h2>
+        </div>
+        <div class="pasos">
+          <h3>¿Cómo comprar online en La Arboleda?</h3>
+            <div class="pasos-compra">
+              <div>
+                <p>Paso 1</p>
+                <i class="fa-solid fa-user"></i>
+                <p>Inicia Sesion</p> 
+                <p><em>Para que puedas tener un seguimiento de tu compra</em></p>
+              </div>
+              <div>
+                <p>Paso 2</p>
+                <i class="fa-solid fa-basket-shopping"></i>
+                <p>Selecciona tus productos</p>
+                <p><em>¡Puedes filtrar por marca y más!</em></p>
+              </div>
+              <div>
+                <p>Paso 3</p>
+                <i class="fa-solid fa-money-check-dollar"></i>
+                <p>Selecciona tu medio de pago</p>
+                <p><em>¡Puedes pagar con tarjeta, mercado pago o desde Rapipago o Pago Fácil!</em></p>
+              </div>
+              <div>
+                <p>Paso 4</p>
+                <i class="fa-solid fa-handshake"></i>
+                <p>Finaliza tu compra</p>
+                <p><em>Al finalizar tu compra tendras tu <strong>código de seguimiento</strong></em></p>
+              </div>
+            </div>
+        </div>
+      </main>
+
+        <section class="section-filtrar">
+          <div class="filtrar">
+            <h2>Filtros</h2>
+            <hr>
+            <p>Filtrar por:</p>
+
+            <div class="f-marca">
+              <h3>Marca</h3>
+              <div>
+                <input type="checkbox" name="" id="">
+                <label for="">Piwen.cl</label>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="">
+                <label for="">NuttsGo</label>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="">
+                <label for="">Sarmiento.fs</label>
+              </div>
+              <div>
+                <input type="checkbox" name="" id="">
+                <label for="">Alifrut.cl</label>
+              </div>
+            </div>
+
+            <div class="f-precio">
+              <h3>Precio</h3>
+              <div>
+                <label for="precios-desde">Desde:</label>
+                <input type="number" name="desde" id="precio-desde">
+              </div>
+              <div>
+                <label for="precios-hasta">Hasta:</label>
+                <input type="number" name="hasta" id="precio-hasta">
+              </div>
+            </div>
+            <div class="f-cantidad">
+              <h3>Cantidad</h3>
+              <div>
+                <input type="checkbox" name="250gr" id="250gr">
+                <label for="250gr">250gr</label>
+              </div>
+                <div>
+                  <input type="checkbox" name="500gr" id="500gr">
+                  <label for="500gr">500gr</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="1kg" id="1kg">
+                  <label for="1kg">1kg</label>
+                </div>
+            </div>
+            <input type="submit" value="Quitar Filtros" id="btn-sin-filtros">
+          </div>          
+        </section>
+
+        <!-- Imagenes de productos -->
+
+        <section class="img-productos">
+          <div class="container">
+            
+          </div>
+        </section>
+      <script src="./js/script.js"></script>
 </body>
 </html>
