@@ -1,139 +1,91 @@
-//Algoritmo - Ingresar nombre (romi o cris) para Ingresar Cuenta
-/* let userName = prompt('Ingresa tu nombre en minusculas. Para salir ingresa \' X \'.');
-while (userName != 'X') {
-    switch (userName) {
-        case 'romina':
-            for (let index = 1; index <= 3; index++) {
-                password = prompt('Ingresa password' + ' ' + userName + '.' + '\nTendras solo 3 intentos\nIntento número: ' + index);
 
-                if (password === 'password') {
+const buscarProducto = document.querySelector('#search-input'),
+    searchBoton = document.querySelector('#search'),
+    cajaProductos = document.querySelector('.box-productos'),
+    // variables de filtros - chacks -precio
+    checkPiwen = document.querySelector('#checked-piwen-cl'),
+    checkNuttsgo = document.querySelector('#checked-piwen-cl')
+    ;
+    
 
-                    alert(`Ingresaste a tu cuenta exitosamente ${userName}`);
-                    break;
-
-                }
-            }
-            break;
-
-        case 'cris':
-
-            for (let index = 1; index <= 3; index++) {
-
-                password = prompt('Ingresa pswd' + ' ' + userName + '.' + '\nTendras solo 3 intentos\nIntento número: ' + index);
-
-                if (password === 'pswd') {
-
-                    alert(`Ingresaste a tu cuenta exitosamente ${userName}`);
-                    break;
-                }
-            }
-
-            break;
-        default:
-            alert('no te conozco');
-            break;
-    }
-    prompt('Para salir ingresa \' X \'.');
-    break;
-} */
-
-// Algoritmo - "Ingresar producto" o "Buscar producto"
-
-/* const ingresaProducto = prompt('Ingresa en minusculas, en singular y sin tildes, un producto. Para salir, ingresa X ');
-while (ingresaProducto != "X") {
-    switch (ingresaProducto) {
-        case 'almendra':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'nuez':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'chocolate':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'leche de almendra':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'mani':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'mantequila de mani':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        case 'leche de coco':
-            alert('Ingresaste' + ' ' + ingresaProducto);
-            break;
-        default:
-            alert('Lo siento, tu producto no se encuentra disponible o no seguiste las intrucciones.\nRecuerda: Ingresa en minusculas, en singular y sin tildes, un producto.');
-
-    }
-    break;
-}
- */
-//Calculadora con prompt en los parámetros - testeo 
-
-/* const calculadora = (n1, operador, n2) => {
-    n1 = parseInt(prompt('Para calcular ingresa un numero'));
-    operador = prompt('Ingresa un operador, como + - / * ');
-    n2 = parseInt(prompt('Ingresar OTRO numero'));
-    switch (operador) {
-        case "+":
-            alert("Tu resultado es" + " " + (n1 + n2));
-            break;
-        case "-":
-            alert("Tu resultado es" + " " + (n1 - n2));
-            break;
-        case "*":
-            alert("Tu resultado es" + " " + (n1 * n2));
-            break;
-        case "/":
-            switch (n2) {
-                case 0:
-                    alert('No se puede dividir por cero.');
-                    break;
-                default:
-                    alert("Tu resultado es" + " " + (n1 / n2));
-                    break;
-            }
-            break;
-        default:
-            alert("Error de sintaxis. Intenta otra vez y lee bien las instrucciones");
-            break;
-    }
-}
-calculadora(); */
-
-
-//---------------> Segunda pre entrega <----------------
 
 //Funcion Constructora
-const productList = [];
-function AddProductList(name, marca, precio, descripcion) {
+const productList = []; // Lista de productos.
+function AddProductList(name, marca, precio, gramos, descripcion, img) {
     this.id = `LB${productList.length + 1}`;
     this.name = name;
     this.marca = marca;
     this.precio = precio;
+    this.gramos = gramos;
     this.descripcion = descripcion;
+    this.img = img;
     //método
-    this.precioCienGramos = (cantidad)=> {
-        return (this.precio * cantidad) / 100;
-        //Si es un liquido el calculo es de 100 mililitros
+    this.precioPorCantidad = (cantidad)=> {
+        return this.precio * cantidad;
+        //cálculo para el carrito - precio por cantidad ingresa por el usuario.
     };
 }
+
 // se agregarán mis productos a productList
-productList.push(new AddProductList('pasas de uvas', 'NutsGo', 94, 'Pasas de uvas con bolsa reciclable'));
-productList.push(new AddProductList('avena', 'NutsGo', 130));
-productList.push(new AddProductList('nuez', 'Piwen.cl', 180,));
-productList.push(new AddProductList('almendra', 'Piwen.cl', 190, 'Almendras con bolsa reciclable'));
-productList.push(new AddProductList('leche de coco', 'NutsGo', 230, 'Caja de leche de Coco varian de 150ml, 250ml, 500ml y 1 Litro'));
-productList.push(new AddProductList('leche de almendras', 'NutsGo', 280, 'Caja de leche de Almendras varian de 150ml, 250ml, 500ml y 1 Litro'));
-productList.push(new AddProductList('mani', 'NutsGo', 150, 'Mani pelado'));
-productList.push(new AddProductList('mix tropical', 'Piwen.cl', 200, 'Frutos secos incluidos: \'almendras\', \'nueces\', \'pasas de uvas\' y \'mani\'.'));
-productList.push(new AddProductList('harina de almendras', 'NutsGo', 190, 'Harina de almendras pelados'));
-productList.push(new AddProductList('coco en lata', 'NutsGo', 160, 'Leche de coco en lata listo para el consumo'));
+productList.push(new AddProductList('pasas de uvas', 'Piwen.cl', 94, 250, 'Pasas de uvas con bolsa reciclable','pasas-de-uvas.jpg'));
+productList.push(new AddProductList('avena', 'Piwen.cl', 130, 400,'Avena integral' ,'avena.jpg'));
+productList.push(new AddProductList('nuez', 'Piwen.cl', 180, 100, 'Nuez sin pelar' ,'nuez.jpg'));
+productList.push(new AddProductList('almendra', 'Piwen.cl', 390, 250, 'Almendras con bolsa reciclable','almendras-piwen.jpg'));
+productList.push(new AddProductList('leche de coco', 'NutsGo', 230, 500, 'Caja de leche de Coco varian de 150ml, 250ml, 500ml y 1 Litro','leche-de-coco.jpg'));
+productList.push(new AddProductList('leche de almendras', 'NutsGo', 280, 500, 'Caja de leche de Almendras','leche-de-almendras.jpg'));
+productList.push(new AddProductList('mani', 'NutsGo', 1250, 350, 'Mani en mantequilla','crema-de-cacahuete.jpg'));
+productList.push(new AddProductList('mix tropical', 'Piwen.cl', 200, 250, 'Frutos secos incluidos: \'almendras\', \'nueces\', \'pasas de uvas\' y \'mani\'.','mix-tropical.jpg'));
+productList.push(new AddProductList('harina de almendras', 'NutsGo', 190, 250, 'Harina de almendras pelados','harina-de-almendras.jpg'));
+productList.push(new AddProductList('coco en lata', 'NutsGo', 360, 250, 'Leche de coco en lata listo para el consumo','coco-en-lata.jpg'));
 
 console.log(productList);
 
+
+function filtrarProductos(filtro) {
+    let filtrar = productList.filter((el)=>{
+        return el.name.includes(filtro);
+    });
+    return filtrar;
+}
+
+// Crea cada "card" de cada producto 
+function crearTarget(arr) {
+    let html;
+    cajaProductos.innerHTML = "";
+    // si el producto que busca no existe devuleve el h3 y su contenido.
+        if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
+            cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
+        }
+    for (const producto of arr) {
+        html = 
+        `<div class="container">
+            <div class="img-card">
+                <img src="./assets/img-productos/${producto.img}">
+            </div>
+                <div class="texto">
+                    <p class="name-card">${producto.name} - ${producto.marca}</p>
+                    <p>${producto.gramos}gr/mililitros</p>
+                    <span class="precio"><strong>$ ${producto.precio}</strong></span>
+                    <div>
+                        <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad...">
+                        <button class="boton" id="${producto.id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                </div>
+        </div>`;
+        cajaProductos.innerHTML += html;
+        
+    }
+}
+crearTarget(productList);
+
+searchBoton.addEventListener('click', (e)=>{
+    e.preventDefault();
+    let filtro = filtrarProductos(buscarProducto.value.toLowerCase());
+    
+    console.log(filtro);
+    crearTarget(filtro);
+    
+})
 /* objeto para testeos y usos futuros - ¡¡IGNORAR!!
 //Objeto 
 const codigoPostal = [

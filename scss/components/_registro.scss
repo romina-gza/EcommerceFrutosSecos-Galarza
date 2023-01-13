@@ -1,0 +1,85 @@
+.main{
+    height: 100vh;
+    @include display-flex(column, center,center);
+    background-image: linear-gradient(rgba(51, 55, 60, 0.484), rgba(15, 15, 15, 0.5)), url("https://cdn.pixabay.com/photo/2018/11/17/22/15/trees-3822149_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+     //CHANGED ETIQUETA ID    
+    .caja {
+        background-color: #fff;
+        padding: 3rem 4rem;
+        border-radius: 5px;
+    
+        .first{
+            height: 4rem;
+            @include display-flex(row, center, center);
+            margin: 1rem 0;
+            img {
+                max-width: 5rem;
+            }
+            h1 {
+                font-size: 3rem;
+                color: #76c893;
+                margin: 1rem;
+            }
+        }
+    }
+    .changed {
+        h2 {
+            text-align: center;
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        form {
+            @include display-flex(column, center, center);
+            .contenedor-inputs-registrar {
+                @include display-flex(column, center, center);
+                input {
+                    width: 100%;
+                    margin-bottom: 2rem;
+                    height: 5.2rem;
+                    font-size: 1.8rem;
+                    text-align: center;
+                    border: none;
+                    border-bottom: 1px solid #BBBBBB;
+                } 
+            }
+            .btn-submit-registrar {
+                padding: 0 2rem;
+                height: 4rem;
+                line-height: 4rem;
+                border: none;
+                color: #fff;
+                background: #41c36f;
+                border-radius: 3px;
+                font-size: 1.6rem;
+                transition: .3s ease all;
+                cursor: pointer;
+            }
+            .btn-submit-registrar:hover {
+                background: rgba(10, 196, 19, 0.799);
+                cursor: pointer;
+            }
+            .btn-submit-registrar:active {
+                background: rgba(8, 163, 16, 0.902);
+            }
+            p {
+                margin: 0.4rem;
+                font-size: 1.15rem;
+                span {
+                    text-decoration: underline;
+                }
+                span:hover {
+                    color: rgb(117, 1, 227);
+                    cursor: pointer;
+                }
+                span:active {
+                    color: blue;
+                }
+            }
+        }
+
+    }
+}

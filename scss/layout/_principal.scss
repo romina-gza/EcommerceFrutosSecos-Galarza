@@ -15,6 +15,167 @@ body {
                 color: $color-default;
             }
         }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.541);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            @include display-flex(row,center,center);
+            visibility: hidden;
+            .popup{
+                background-color: #fff;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+                border-radius: 3px;
+                padding: 2rem;
+                text-align: center;
+                width: 60rem;
+                transition: .3s ease all;
+                transform: scale(0.7);
+                opacity: 0;
+                .btn-cerrar-popup {
+                    font-size: 1.6rem;
+                    line-height: 1.6rem;
+                    display: block;
+                    text-align: right;
+                    color: #BBBBBB;
+                    transition: .2s ease all;
+                }
+                .btn-cerrar-popup:hover {
+                    color: rgb(207, 0, 0);
+                }
+                #change{
+                    transition: .3s ease all;
+                    transform: scale(0.7);
+                    opacity: 0;
+                    
+                    h3 {
+                        font-size: 2.6rem;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                    }
+                    form {
+                        .contenedor-inputs{
+                        input {
+                            width: 85%;
+                            margin-bottom: 2rem;
+                            height: 5.2rem;
+                            font-size: 1.8rem;
+                            text-align: center;
+                            border: none;
+                            border-bottom: 1px solid #BBBBBB;
+                        } 
+                            #check {
+                            width: 1.35rem;
+                            height: 1.35rem;
+                            margin-right: 0.5rem;
+                            margin-bottom: 1.9rem;
+                            }
+                            span {
+                                font-size: 1.35rem;
+                            }
+                        }
+                        .btn-submit{
+                            padding: 0 2rem;
+                            height: 4rem;
+                            line-height: 4rem;
+                            border: none;
+                            color: #fff;
+                            background: #41c36f;
+                            border-radius: 3px;
+                            font-size: 1.6rem;
+                            transition: .3s ease all;
+                        }
+                        .btn-submit:hover{
+                            background: rgba(10, 196, 19, 0.799);
+                            cursor: pointer;
+                        }
+                        .btn-submit:active{
+                            background: rgba(8, 163, 16, 0.902);
+                        }
+                        h5 {
+                            font-size: 1.3rem;
+                            font-weight: 500;
+                            margin: 1rem 0;
+                            span {                            
+                                font-weight: 500;
+                                text-decoration: underline;
+                                color: blueviolet;
+                            }
+                            span:hover{
+                                color: rgb(117, 1, 227);
+                                cursor: pointer;
+                            }
+                            span:active{
+                                color: blue;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
+            .popup.active , 
+            #change.active {
+                opacity: 1;
+                transform: scale(1);
+            }
+           /*  //CHANGED ETIQUETA ID    
+            .changed{
+                visibility: hidden;
+                opacity: 0;
+                position: absolute;
+                transition: .3s ease all;
+                h3 {
+                    font-size: 2.6rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+                form {
+                    @include display-flex(column, center, center);
+                    .contenedor-inputs-registrar {
+                        @include display-flex(column, center, center);
+                        input {
+                            width: 100%;
+                            margin-bottom: 2rem;
+                            height: 5.2rem;
+                            font-size: 1.8rem;
+                            text-align: center;
+                            border: none;
+                            border-bottom: 1px solid #BBBBBB;
+                        } 
+                    }
+                    .btn-submit-registrar {
+                        padding: 0 2rem;
+                        height: 4rem;
+                        line-height: 4rem;
+                        border: none;
+                        color: #fff;
+                        background: #41c36f;
+                        border-radius: 3px;
+                        font-size: 1.6rem;
+                        transition: .3s ease all;
+                        cursor: pointer;
+                    }
+                }
+
+            }
+            .changed.active {
+                background: #fff;
+                visibility: visible;
+                position: inherit;
+                opacity: 1;
+                transform: scale(1);
+                @include display-flex(column, center,center);
+            }
+             */
+        }
+        .overlay.active{
+            visibility: visible;
+        }
+
         .pasos {
             width: 100%;
             height: 22rem;
@@ -61,65 +222,129 @@ body {
             }
         }
     }
-    .section-filtrar {
-        width: 30rem;
-        padding: 3rem 5rem 0 5rem;
-        .filtrar {
-            h2 {
-                font-size: 2rem;
-                padding: 0.5rem;
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 1fr;
+        .section-filtrar {
+            width: 30rem;
+            padding: 3rem 5rem 0 5rem;
+            grid-column: 1/2;
+            .filtrar {
+                h2 {
+                    font-size: 2rem;
+                    padding: 0.5rem;
+                }
+                p {
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                }
+                .f-marca {
+                    div {
+                        @include display-flex(row, start, center);
+                        padding-left: 2rem;
+                        label {
+                            padding: 0.5rem;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+                .f-precio {
+                    div {
+                        @include display-flex(column, center, start);
+                        padding: 0.3rem 0 0.3rem 2rem;
+                        label {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+                .f-cantidad {
+                    div {
+                        @include display-flex(row, start, center);
+                        padding-left: 2rem;
+                        label {
+                            padding: 0.5rem;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+                #btn-sin-filtros {
+                    width: 15rem;
+                    height: 3rem;
+                    font-weight: 600;
+                    margin: 2rem;
+                    color: $color-secundario;
+                    background-color: #5de78ec9;
+                    border: none;
+                    box-shadow: 1.5px 1.5px 2.8px #0000006b;
+                }
+                h3 {
+                    font-size: 1.5rem;
+                    padding: 0.5rem;
+                }
+                
+                
             }
-            p {
-                text-transform: capitalize;
-                font-weight: 700;
-                font-size: 1.5rem;
-                padding: 0.5rem;
-            }
-            .f-marca {
-                div {
-                    @include display-flex(row, start, center);
-                    padding-left: 2rem;
-                    label {
-                        padding: 0.5rem;
+        }
+        .box-productos{
+            width: 95%;
+            height: auto;
+            @include display-flex(row, space-around, center);
+            flex-wrap: wrap;
+            grid-column: 2/5;
+            .container{
+                width: 23rem;
+                height: auto;
+                margin: 2rem 2rem;
+                padding: 2rem;
+                padding-bottom: 1rem;
+                background-color: #fff;
+                box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.541);
+                .img-card {
+                    width: 100%;
+                    height: 20rem;
+                    img {
+                        width: 90%;
+                        height: 100%;
+                        object-fit: cover;
+                        }
+                    }
+                .texto {
+                    margin: 1rem 1.5rem;
+                    p , .precio {
                         font-size: 1.4rem;
+                        margin: 1rem 0;
+                    }
+                    p:first-of-type {
+                        text-transform: capitalize;
+                    }
+                    
+                    div{
+                        @include display-flex(row, flex-start, center);
+                        input {
+                            max-width: 12rem;
+                            height: 2.6rem;
+                        }
+                        button {
+                            color: #41c36f;
+                            background-color: #fff;
+                            width: 2.3rem;
+                            height: 2.3rem;
+                            margin-left: 1rem;
+                            padding: 1.3rem;
+                            border-radius: 5px;
+                            border: 1px solid #000;
+                            @include display-flex(row, center, center);
+                        }
+                        button:active{
+                            background-color: #41c36f;
+                            color:#fff;
+                        }
                     }
                 }
             }
-            .f-precio {
-                div {
-                    @include display-flex(column, center, start);
-                    padding: 0.3rem 0 0.3rem 2rem;
-                    label {
-                        font-size: 1.4rem;
-                    }
-                }
-            }
-            .f-cantidad {
-                div {
-                    @include display-flex(row, start, center);
-                    padding-left: 2rem;
-                    label {
-                        padding: 0.5rem;
-                        font-size: 1.4rem;
-                    }
-                }
-            }
-            #btn-sin-filtros {
-                width: 15rem;
-                height: 3rem;
-                font-weight: 600;
-                margin: 2rem;
-                color: $color-secundario;
-                background-color: #5de78ec9;
-                border: none;
-                box-shadow: 1.5px 1.5px 2.8px #0000006b;
-            }
-            h3 {
-                font-size: 1.5rem;
-                padding: 0.5rem;
-            }
-            
-            
         }
     }
 }

@@ -25,10 +25,12 @@
           La Arboleda
         </a>  
         <div class="box-search">
-          <label for="search" class="icon-search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </label>
-          <input type="text" id="search" placeholder="Buscar...">
+          <input type="text" id="search-input" placeholder="Busca un producto ...">
+          <button id="search">
+            <label for="search" class="icon-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+            Buscar</button>
         </div>        
         <ul class="icons"> 
           <li>
@@ -38,7 +40,7 @@
           </li>         
           <li>
             <a href="#">
-              <i class="fa-solid fa-user"></i>
+              <i id="abrirBtnUser" class="fa-solid fa-user"></i>
             </a>
           </li>
           <li>
@@ -55,6 +57,44 @@
           <h1>La Arboleda</h1>
           <h2>Un lugar con más que frutos secos</h2>
         </div>
+        <!-- Login User -->
+        <div class="overlay " id="overlay">
+          <div class="popup " id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">
+              <i class="fas fa-times"></i>
+            </a>
+<!--             <div id="changed" class="changed"></div>
+ -->            <div id="change">
+              <h3>Inicia Sesion</h3>
+              <form action="">
+                <div class="contenedor-inputs">
+                  <input id="userReg" type="text" placeholder="Usuario" required>
+                  <input id="passwordReg" type="password" placeholder="Contraseña" required>
+                  <br>
+                  <input type="checkbox" id="check">
+                  <span>Recordar</span>
+                </div>
+                <input id="ingresar" type="submit" class="btn-submit" value="Ingresar">
+                <p id="mensaje-login"></p>
+                <h5>¿Aún no tienes una cuenta? <span id="registrar">Regístrate desde aquí.</span></h5>
+              </form>
+            </div>
+          </div>
+          <!-- Registro -->
+          <!-- <div id="changed" class="changed">
+            <h3>Registrar</h3>
+            <form action="">
+              <div class="contenedor-inputs-registrar">
+                <input type="text" name="Nombre" placeholder="Nombre" required>
+                <input type="text" placeholder="Usuario" required>
+                <input type="email" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+              </div>
+              <input type="submit" class="btn-submit-registrar" value="Registrar">
+            </form>
+          </div> -->
+        </div> 
+
         <div class="pasos">
           <h3>¿Cómo comprar online en La Arboleda?</h3>
             <div class="pasos-compra">
@@ -86,6 +126,7 @@
         </div>
       </main>
 
+      <section class="grid">
         <section class="section-filtrar">
           <div class="filtrar">
             <h2>Filtros</h2>
@@ -95,20 +136,20 @@
             <div class="f-marca">
               <h3>Marca</h3>
               <div>
-                <input type="checkbox" name="" id="">
-                <label for="">Piwen.cl</label>
+                <input type="checkbox" name="Piwen.cl" id="checked-piwen-cl">
+                <label for="checked-piwen-cl">Piwen.cl</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="">
-                <label for="">NuttsGo</label>
+                <input type="checkbox" name="NuttsGo" id="checked-nuttsgo">
+                <label for="checked-nuttsgo">NuttsGo</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="">
-                <label for="">Sarmiento.fs</label>
+                <input type="checkbox" name="sarmiento.fs" id="checked-sarmiento-fs">
+                <label for="checked-sarmiento-fs">Sarmiento.fs</label>
               </div>
               <div>
-                <input type="checkbox" name="" id="">
-                <label for="">Alifrut.cl</label>
+                <input type="checkbox" name="alifrut.cl" id="checked-alifrut-cl">
+                <label for="checked-alifrut-cl">Alifrut.cl</label>
               </div>
             </div>
 
@@ -135,7 +176,7 @@
                 </div>
                 <div>
                   <input type="checkbox" name="1kg" id="1kg">
-                  <label for="1kg">1kg</label>
+                  <label for="1kg">700gr</label>
                 </div>
             </div>
             <input type="submit" value="Quitar Filtros" id="btn-sin-filtros">
@@ -143,12 +184,12 @@
         </section>
 
         <!-- Imagenes de productos -->
+        <section class="box-productos">
 
-        <section class="img-productos">
-          <div class="container">
-            
-          </div>
         </section>
+      </section>
+      <script src="./js/popup.js"></script>
       <script src="./js/script.js"></script>
+      
 </body>
 </html>
