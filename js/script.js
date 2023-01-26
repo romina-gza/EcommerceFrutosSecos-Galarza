@@ -58,100 +58,57 @@ function EnvioADomicilio(cp, localidad, precio) {
 } 
 */
 
-//FETCH 
-async function firstAPI(){
-    const response = await fetch('./data/data.json');
-    const datos = await response.json();
-    //console.log(marcaAll)
-    /* datos.forEach(datosP => {
-        //  console.log( datosP.marca);
-    }) */
-    console.log(datos);
-    const marcaAll = datos.marca;
-    console.log(marcaAll)
-    console.log(datos[0].marca)
-    crearTarget(datos)
-    function filtrarProductos(filtro) {
-        let filtrar = datos.filter((el)=>{
-            return el.name.includes(filtro);
-        });
-        return filtrar;
-    }
-    // 
-    const filtrarCheck = () => {
-        let filtrosParaCheckear = [checkPiwen, checkNutsgo , checkSarmiento, checkAlifrut];
-         let proceso = filtrosParaCheckear.forEach(element => {
-            let marcas = datos.forEach(elemento => elemento.marca);
-            if (element.checked == marcas){
-                console.log('Funciona')
-            } else ('no funciona')
-        });
-    };
-    // Crea cada "card" de cada producto 
-    function crearTarget(arr) {
-        console.log(arr)
-        let html;
-        cajaProductos.innerHTML = "";
-        // si el producto que busca no existe devuleve el h3 y su contenido.
-            if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
-                cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
-            }
-        for (const producto of arr) {
-            const {id, name, precio, marca, gramos, img} = producto;
-            html = 
-            `<div class="container">
-                <div class="img-card">
-                    <img src="./assets/img-productos/${img}">
-                </div>
-                    <div class="texto">
-                        <p class="name-card">${name} - ${marca}</p>
-                        <p>${gramos}gr/mililitros</p>
-                        <span class="precio"><strong>$ ${precio}</strong></span>
-                        <div>
-                            <div class="btn-less-num-add">
-                                <input class="less" id="less" type="button" value="-">
-                                <input class="num" id="num" type="number" min="1" value="1">
-                                <input class="add" id="add" type="button" value="+">
-                            </div>
-                            <button class="boton" id="${id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
-                        </div>
-                    </div>
-            </div>`;
-            cajaProductos.innerHTML += html;
-            
-        }
-    }
-    
-    searchBoton.addEventListener('click', (e)=>{
-        e.preventDefault();
-        let filtro = filtrarProductos(buscarProducto.value.toLowerCase());
-        console.log(filtro);
-        crearTarget(filtro); 
-        
-    })
-    
+//LO QUE HACE: Pide un producto y la cantidad de gramos. Luego devuelve el precio real en gramos del producto. Al final, todos los productos buscados se agregan a "aqui[]"
+let buscar1 = prompt('Ingresa el producto que quieras buscar. Para salir ingresa \'salir\'');
+let gramos = parseInt(prompt('Ingresa en números la cantidad de gramos o mililitros que desees. Para salir puedes presionar \'enter\''));
+let aqui = [];
+let orden = [];
+while (buscar1.toLowerCase() != "salir") {
 
-    function filtrarProductosMarca(filtro) {
-        let filtrar = datos.filter((el)=>{
-            return el.marca.includes(filtro);
-        });
-        return filtrar;
-    }
+        for (const producto of productList) {
+            if (buscar1.toLowerCase() == producto.name){
+                let devolver = `${producto.name} $ ${producto.precioCienGramos(gramos)} es el costo de ${gramos} gramos`;   
+                alert(devolver);
 
-    boxChecks.forEach(boxCh => {
-        boxCh.addEventListener('change', ()=>{
-            if (!boxCh.checked) {
-                crearTarget(datos)
-            } else {
-                let encuentra = boxCh.value ;
-                let mostrar = filtrarProductosMarca(encuentra);
-                crearTarget(mostrar);
-                console.log(mostrar)
+                let pedido = {'producto': producto.name, 
+                            'cantidad': gramos,
+                            'costo': producto.precioCienGramos(gramos)};
+                orden.unshift(pedido);
+                
+                let obtIndex = productList.indexOf(producto);
+                let devIndex = productList[obtIndex];
+                aqui.push(devIndex);
             } 
-        })           
-        
-    })
-} 
-firstAPI();
+        }
+    
+    buscar1 = prompt('Ingresa otro producto. Para salir ingresa salir');
+    gramos = parseInt(prompt('Ingresa la cantidad de gramos que desees. Para salir puedes presionar \'enter\''));
+}
+// Los CONSOLE.LOG siguientes son para poder verlos en la consola a la hora de testear.
+console.log(aqui);
+console.log(orden);
 
+//find - Busca en tu lista de compras ese producto que crees que olvidaste. si NO está te pide buscar otra vez.
+let clave1 = prompt('Buscar producto en tu lista. Para salir ingresa salir.');
+while (clave1.toLowerCase() != "salir") {
+const encuentra = orden.find( encontrar =>{
+    if (encontrar.producto === clave1.toLowerCase()){
+        let mapa = `${encontrar.producto} se encuentra dentro de tu lista de agregados al carrito.`;
+            alert(mapa);
+    } 
+}
+    
+) 
+    clave1 = prompt('Buscar otro producto en tu lista. Para salir ingresa salir.');
+}
+// filter - prepárate para un producto por alert :)
+let claveS = parseInt(prompt('Nuestros precios son por cada 100gramos. Buscar un numero mayor que...'));
+let claveS1 = parseInt(prompt('pero menor que...'));
+const encuentraFilter = productList.filter(elemento =>{
+    if (elemento.precio >= claveS && elemento.precio <= claveS1) {
+        alert('$' + elemento.precio + ' los 100 gramos/mililitros de ' + elemento.name);
+    }
+    
+    }
+) 
 
