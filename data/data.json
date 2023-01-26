@@ -1,0 +1,92 @@
+[
+    {
+       "id":"LA1",
+       "name":"pasas de uvas",
+       "marca":"piwen",
+       "precio":94,
+       "gramos":250,
+       "descripcion":"Pasas de uvas con bolsa reciclable",
+       "img":"pasas-de-uvas.jpg"
+    },
+    {
+       "id":"LA2",
+       "name":"avena",
+       "marca":"piwen",
+       "precio":130,
+       "gramos":400,
+       "descripcion":"Avena integral",
+       "img":"avena.jpg"
+    },
+    {
+       "id":"LA3",
+       "name":"nuez",
+       "marca":"piwen",
+       "precio":180,
+       "gramos":100,
+       "descripcion":"Nuez sin pelar",
+       "img":"nuez.jpg"
+    },
+    {
+       "id":"LA4",
+       "name":"almendra",
+       "marca":"piwen",
+       "precio":390,
+       "gramos":250,
+       "descripcion":"Almendras con bolsa reciclable",
+       "img":"almendras-piwen.jpg"
+    },
+    {
+       "id":"LA5",
+       "name":"leche de coco",
+       "marca":"nutsGo",
+       "precio":230,
+       "gramos":500,
+       "descripcion":"Caja de leche de Coco 500ml",
+       "img":"leche-de-coco.jpg"
+    },
+    {
+       "id":"LA6",
+       "name":"leche de almendras",
+       "marca":"nutsGo",
+       "precio":280,
+       "gramos":500,
+       "descripcion":"Caja de leche de Almendras",
+       "img":"leche-de-almendras.jpg"
+    },
+    {
+       "id":"LA7",
+       "name":"mani",
+       "marca":"nutsGo",
+       "precio":1250,
+       "gramos":350,
+       "descripcion":"Mani en mantequilla",
+       "img":"crema-de-cacahuete.jpg"
+    },
+    {
+       "id":"LA8",
+       "name":"mix tropical",
+       "marca":"piwen",
+       "precio":200,
+       "gramos":250,
+       "descripcion":"Frutos secos incluidos: \\'almendras\\', \\'nueces\\', \\'pasas de uvas\\' y \\'mani\\'.",
+       "img":"mix-tropical.jpg"
+    },
+    {
+       "id":"LA9",
+       "name":"harina de almendras",
+       "marca":"nutsGo",
+       "precio":190,
+       "gramos":250,
+       "descripcion":"Harina de almendras pelados",
+       "img":"harina-de-almendras.jpg"
+    },
+    {
+       "id":"LA10",
+       "name":"coco en lata",
+       "marca":"nutsGo",
+       "precio":360,
+       "gramos":250,
+       "descripcion":"Leche de coco en lata listo para el consumo",
+       "img":"coco-en-lata.jpg"
+    }
+]

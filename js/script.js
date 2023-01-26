@@ -1,18 +1,20 @@
-
 const buscarProducto = document.querySelector('#search-input'),
     searchBoton = document.querySelector('#search'),
     cajaProductos = document.querySelector('.box-productos'),
-    // variables de filtros - chacks -precio
-    checkPiwen = document.querySelector('#checked-piwen-cl'),
-    checkNuttsgo = document.querySelector('#checked-piwen-cl')
-    ;
-    
+    // variables de filtros - checks - precio
+    checkPiwen = document.getElementById('piwen'),
+    checkNutsgo = document.getElementById('nuttsGo'),
+    checkSarmiento = document.getElementById('sarmiento'),
+    checkAlifrut = document.getElementById('alifrut'),
+    // boton para mostrar todos los productos 
+    btnShowAll = document.getElementById('btn-show-all');
 
+const boxChecks = document.querySelectorAll('input[type="checkbox"]'); 
 
 //Funcion Constructora
 const productList = []; // Lista de productos.
 function AddProductList(name, marca, precio, gramos, descripcion, img) {
-    this.id = `LB${productList.length + 1}`;
+    this.id = `LA${productList.length + 1}`;
     this.name = name;
     this.marca = marca;
     this.precio = precio;
@@ -26,66 +28,6 @@ function AddProductList(name, marca, precio, gramos, descripcion, img) {
     };
 }
 
-// se agregarán mis productos a productList
-productList.push(new AddProductList('pasas de uvas', 'Piwen.cl', 94, 250, 'Pasas de uvas con bolsa reciclable','pasas-de-uvas.jpg'));
-productList.push(new AddProductList('avena', 'Piwen.cl', 130, 400,'Avena integral' ,'avena.jpg'));
-productList.push(new AddProductList('nuez', 'Piwen.cl', 180, 100, 'Nuez sin pelar' ,'nuez.jpg'));
-productList.push(new AddProductList('almendra', 'Piwen.cl', 390, 250, 'Almendras con bolsa reciclable','almendras-piwen.jpg'));
-productList.push(new AddProductList('leche de coco', 'NutsGo', 230, 500, 'Caja de leche de Coco varian de 150ml, 250ml, 500ml y 1 Litro','leche-de-coco.jpg'));
-productList.push(new AddProductList('leche de almendras', 'NutsGo', 280, 500, 'Caja de leche de Almendras','leche-de-almendras.jpg'));
-productList.push(new AddProductList('mani', 'NutsGo', 1250, 350, 'Mani en mantequilla','crema-de-cacahuete.jpg'));
-productList.push(new AddProductList('mix tropical', 'Piwen.cl', 200, 250, 'Frutos secos incluidos: \'almendras\', \'nueces\', \'pasas de uvas\' y \'mani\'.','mix-tropical.jpg'));
-productList.push(new AddProductList('harina de almendras', 'NutsGo', 190, 250, 'Harina de almendras pelados','harina-de-almendras.jpg'));
-productList.push(new AddProductList('coco en lata', 'NutsGo', 360, 250, 'Leche de coco en lata listo para el consumo','coco-en-lata.jpg'));
-
-console.log(productList);
-
-
-function filtrarProductos(filtro) {
-    let filtrar = productList.filter((el)=>{
-        return el.name.includes(filtro);
-    });
-    return filtrar;
-}
-
-// Crea cada "card" de cada producto 
-function crearTarget(arr) {
-    let html;
-    cajaProductos.innerHTML = "";
-    // si el producto que busca no existe devuleve el h3 y su contenido.
-        if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
-            cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
-        }
-    for (const producto of arr) {
-        html = 
-        `<div class="container">
-            <div class="img-card">
-                <img src="./assets/img-productos/${producto.img}">
-            </div>
-                <div class="texto">
-                    <p class="name-card">${producto.name} - ${producto.marca}</p>
-                    <p>${producto.gramos}gr/mililitros</p>
-                    <span class="precio"><strong>$ ${producto.precio}</strong></span>
-                    <div>
-                        <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad...">
-                        <button class="boton" id="${producto.id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
-                    </div>
-                </div>
-        </div>`;
-        cajaProductos.innerHTML += html;
-        
-    }
-}
-crearTarget(productList);
-
-searchBoton.addEventListener('click', (e)=>{
-    e.preventDefault();
-    let filtro = filtrarProductos(buscarProducto.value.toLowerCase());
-    
-    console.log(filtro);
-    crearTarget(filtro);
-    
-})
 /* objeto para testeos y usos futuros - ¡¡IGNORAR!!
 //Objeto 
 const codigoPostal = [
@@ -116,57 +58,100 @@ function EnvioADomicilio(cp, localidad, precio) {
 } 
 */
 
-//LO QUE HACE: Pide un producto y la cantidad de gramos. Luego devuelve el precio real en gramos del producto. Al final, todos los productos buscados se agregan a "aqui[]"
-let buscar1 = prompt('Ingresa el producto que quieras buscar. Para salir ingresa \'salir\'');
-let gramos = parseInt(prompt('Ingresa en números la cantidad de gramos o mililitros que desees. Para salir puedes presionar \'enter\''));
-let aqui = [];
-let orden = [];
-while (buscar1.toLowerCase() != "salir") {
-
-        for (const producto of productList) {
-            if (buscar1.toLowerCase() == producto.name){
-                let devolver = `${producto.name} $ ${producto.precioCienGramos(gramos)} es el costo de ${gramos} gramos`;   
-                alert(devolver);
-
-                let pedido = {'producto': producto.name, 
-                            'cantidad': gramos,
-                            'costo': producto.precioCienGramos(gramos)};
-                orden.unshift(pedido);
-                
-                let obtIndex = productList.indexOf(producto);
-                let devIndex = productList[obtIndex];
-                aqui.push(devIndex);
-            } 
+//FETCH 
+async function firstAPI(){
+    const response = await fetch('./data/data.json');
+    const datos = await response.json();
+    //console.log(marcaAll)
+    /* datos.forEach(datosP => {
+        //  console.log( datosP.marca);
+    }) */
+    console.log(datos);
+    const marcaAll = datos.marca;
+    console.log(marcaAll)
+    console.log(datos[0].marca)
+    crearTarget(datos)
+    function filtrarProductos(filtro) {
+        let filtrar = datos.filter((el)=>{
+            return el.name.includes(filtro);
+        });
+        return filtrar;
+    }
+    // 
+    const filtrarCheck = () => {
+        let filtrosParaCheckear = [checkPiwen, checkNutsgo , checkSarmiento, checkAlifrut];
+         let proceso = filtrosParaCheckear.forEach(element => {
+            let marcas = datos.forEach(elemento => elemento.marca);
+            if (element.checked == marcas){
+                console.log('Funciona')
+            } else ('no funciona')
+        });
+    };
+    // Crea cada "card" de cada producto 
+    function crearTarget(arr) {
+        console.log(arr)
+        let html;
+        cajaProductos.innerHTML = "";
+        // si el producto que busca no existe devuleve el h3 y su contenido.
+            if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
+                cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
+            }
+        for (const producto of arr) {
+            const {id, name, precio, marca, gramos, img} = producto;
+            html = 
+            `<div class="container">
+                <div class="img-card">
+                    <img src="./assets/img-productos/${img}">
+                </div>
+                    <div class="texto">
+                        <p class="name-card">${name} - ${marca}</p>
+                        <p>${gramos}gr/mililitros</p>
+                        <span class="precio"><strong>$ ${precio}</strong></span>
+                        <div>
+                            <div class="btn-less-num-add">
+                                <input class="less" id="less" type="button" value="-">
+                                <input class="num" id="num" type="number" min="1" value="1">
+                                <input class="add" id="add" type="button" value="+">
+                            </div>
+                            <button class="boton" id="${id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+            </div>`;
+            cajaProductos.innerHTML += html;
+            
         }
+    }
     
-    buscar1 = prompt('Ingresa otro producto. Para salir ingresa salir');
-    gramos = parseInt(prompt('Ingresa la cantidad de gramos que desees. Para salir puedes presionar \'enter\''));
-}
-// Los CONSOLE.LOG siguientes son para poder verlos en la consola a la hora de testear.
-console.log(aqui);
-console.log(orden);
+    searchBoton.addEventListener('click', (e)=>{
+        e.preventDefault();
+        let filtro = filtrarProductos(buscarProducto.value.toLowerCase());
+        console.log(filtro);
+        crearTarget(filtro); 
+        
+    })
+    
 
-//find - Busca en tu lista de compras ese producto que crees que olvidaste. si NO está te pide buscar otra vez.
-let clave1 = prompt('Buscar producto en tu lista. Para salir ingresa salir.');
-while (clave1.toLowerCase() != "salir") {
-const encuentra = orden.find( encontrar =>{
-    if (encontrar.producto === clave1.toLowerCase()){
-        let mapa = `${encontrar.producto} se encuentra dentro de tu lista de agregados al carrito.`;
-            alert(mapa);
-    } 
-}
-    
-) 
-    clave1 = prompt('Buscar otro producto en tu lista. Para salir ingresa salir.');
-}
-// filter - prepárate para un producto por alert :)
-let claveS = parseInt(prompt('Nuestros precios son por cada 100gramos. Buscar un numero mayor que...'));
-let claveS1 = parseInt(prompt('pero menor que...'));
-const encuentraFilter = productList.filter(elemento =>{
-    if (elemento.precio >= claveS && elemento.precio <= claveS1) {
-        alert('$' + elemento.precio + ' los 100 gramos/mililitros de ' + elemento.name);
+    function filtrarProductosMarca(filtro) {
+        let filtrar = datos.filter((el)=>{
+            return el.marca.includes(filtro);
+        });
+        return filtrar;
     }
-    
-    }
-) 
+
+    boxChecks.forEach(boxCh => {
+        boxCh.addEventListener('change', ()=>{
+            if (!boxCh.checked) {
+                crearTarget(datos)
+            } else {
+                let encuentra = boxCh.value ;
+                let mostrar = filtrarProductosMarca(encuentra);
+                crearTarget(mostrar);
+                console.log(mostrar)
+            } 
+        })           
+        
+    })
+} 
+firstAPI();
+
 

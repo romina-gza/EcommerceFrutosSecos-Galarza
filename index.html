@@ -25,7 +25,7 @@
           La Arboleda
         </a>  
         <div class="box-search">
-          <input type="text" id="search-input" placeholder="Busca un producto ...">
+          <input type="search" id="search-input" placeholder="Busca un producto ...">
           <button id="search">
             <label for="search" class="icon-search">
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -44,8 +44,8 @@
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="fa-solid fa-cart-shopping"></i>
+            <a>
+              <i id="abrir-carrito" class="fa-solid fa-cart-shopping"></i>
             </a>
           </li>
         </ul>         
@@ -63,8 +63,7 @@
             <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">
               <i class="fas fa-times"></i>
             </a>
-<!--             <div id="changed" class="changed"></div>
- -->            <div id="change">
+            <div id="change">
               <h3>Inicia Sesion</h3>
               <form action="">
                 <div class="contenedor-inputs">
@@ -80,19 +79,6 @@
               </form>
             </div>
           </div>
-          <!-- Registro -->
-          <!-- <div id="changed" class="changed">
-            <h3>Registrar</h3>
-            <form action="">
-              <div class="contenedor-inputs-registrar">
-                <input type="text" name="Nombre" placeholder="Nombre" required>
-                <input type="text" placeholder="Usuario" required>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <input type="password" placeholder="Contraseña" required>
-              </div>
-              <input type="submit" class="btn-submit-registrar" value="Registrar">
-            </form>
-          </div> -->
         </div> 
 
         <div class="pasos">
@@ -136,20 +122,20 @@
             <div class="f-marca">
               <h3>Marca</h3>
               <div>
-                <input type="checkbox" name="Piwen.cl" id="checked-piwen-cl">
-                <label for="checked-piwen-cl">Piwen.cl</label>
+                <input type="checkbox" name="piwen" id="piwen" value="piwen">
+                <label for="piwen">Piwen</label>
               </div>
               <div>
-                <input type="checkbox" name="NuttsGo" id="checked-nuttsgo">
-                <label for="checked-nuttsgo">NuttsGo</label>
+                <input type="checkbox" name="nutsGo" id="nutsGo" value="nutsGo">
+                <label for="nutsGo">NutsGo</label>
               </div>
               <div>
-                <input type="checkbox" name="sarmiento.fs" id="checked-sarmiento-fs">
-                <label for="checked-sarmiento-fs">Sarmiento.fs</label>
+                <input type="checkbox" name="sarmiento" id="sarmiento" value="sarmiento">
+                <label for="sarmiento">Sarmiento</label>
               </div>
               <div>
-                <input type="checkbox" name="alifrut.cl" id="checked-alifrut-cl">
-                <label for="checked-alifrut-cl">Alifrut.cl</label>
+                <input type="checkbox" name="alifrut" id="alifrut" value="alifrut">
+                <label for="alifrut">Alifrut</label>
               </div>
             </div>
 
@@ -188,8 +174,41 @@
 
         </section>
       </section>
+      <!-- carrito -->
+      <section class="section-carrito" id="section-carrito">
+        <div class="box-carrito" id="box-carrito">
+          <div class="second-box">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h3>Mi Carrito</h3>
+            <a id="btn-cerrar-carrito" class="btn-cerrar-carrito">
+              <i class="fas fa-times"></i>
+            </a>
+          </div>
+          <div class="carrito-content" id="carrito-content">
+            <!-- productos agregados -->
+          </div>
+          <!--
+            <div class="div-vaciar-carrito">
+              <a href="#" id="btn-vaciar-carrito">Vaciar Carrito
+              <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </div>
+            
+              <div class="footer-carrito" id="footer-carrito">    
+                <div>
+                  <h4>Subtotal</h4>
+                  <span>1234</span>
+                </div>
+                <div>
+                  <h4>Total</h4>
+                  <span>$ 1234</span>
+                </div>
+                  <input type="button" class="btn-carrito" value="Continuar al carrito">
+              </div> -->
+        </div>
+      </section>
       <script src="./js/popup.js"></script>
       <script src="./js/script.js"></script>
-      
+      <script src="./js/shop.js"></script>
 </body>
 </html>

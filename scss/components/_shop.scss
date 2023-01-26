@@ -1,0 +1,143 @@
+.section-carrito {
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: 0.2s ease all;
+    @include display-flex(row, end, center);
+    visibility: hidden;
+    .box-carrito {
+        width: 45rem;
+        height: 100vh;
+        background-color: $color-default;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+        transition: .35s ease all;
+        position: absolute;
+        top: 0;
+        right: -260rem;
+        bottom: 0;
+        opacity: 0;
+        .second-box {
+            @include display-flex(row, space-between, center);
+            i, h3 {
+                padding: 1rem;
+                font-size: 1.8rem;
+            }
+            .btn-cerrar-carrito {
+                color: #BBBBBB;
+                transition: .2s ease all;
+            }
+            .btn-cerrar-carrito:hover {
+                color: rgb(207, 0, 0);
+            }
+        }
+        .carrito-content {
+            width: 100%;
+            height: 65%;
+            overflow: auto;
+            /*overflow-y: scroll; 
+            scroll-behavior: smooth;*/
+            .box-product-added {
+                height: 8rem;
+                @include display-flex(row, space-evenly, center);
+                img {
+                    max-width: 7rem;
+                }
+                .texto-carrito {
+                    width: 15rem;
+                    p:first-of-type {
+                        text-transform: capitalize;
+                        font-size: 1.2rem;
+                    }
+                    p:last-of-type {
+                        color: #646464;
+                    }
+                    span {
+                        color: #646464;
+                    }
+                }
+                .btn-less-num-add input {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                    border: none;
+                    border-radius: 5px;
+                }
+                .num {
+                    text-align: center;
+                }
+                .less , .add {
+                    background-color: #76c893b5;
+                    cursor: pointer;
+                }
+                .less:hover {
+                    color: white;
+                    background-color: rgb(207, 0, 0);
+                }
+                .add:hover {
+                    color: white;
+                    background-color: #13b94d;
+                }
+                span , i {
+                    font-size: 1.3rem;
+                }
+                i {
+                    color: #646464;
+                }
+                i:hover {
+                    color: rgb(207, 0, 0);
+                    cursor: pointer;
+                }
+            }
+        }
+        .div-vaciar-carrito {
+            @include display-flex(row, end, center);
+            font-size: 1.4rem;
+            padding: 0.8rem;
+            span {
+                color: #646464;
+                cursor: pointer;
+            }
+            span:hover {
+                color: rgb(207, 0, 0);
+            }
+        }
+        .footer-carrito {
+            padding: 1.5rem;
+            @include display-flex(column, space-evenly, normal);
+            box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 11px 0px;
+            div {
+                margin: 1rem;
+                @include display-flex(row, space-between, center);
+            }
+            .btn-carrito {
+                padding: 1rem 0;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                font-weight: 600;
+                background: #5de78e;
+                border: #5de78e 3px;
+                color: #003049;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+    .box-carrito.active {
+        transition: .25s ease all;
+        right: 0;
+        opacity: 1;
+    }
+}
+.section-carrito.active {
+    visibility: visible;
+}
+// eliminar controles de input type number
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+//input[type=number] { -moz-appearance:textfield; }

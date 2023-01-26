@@ -39,7 +39,9 @@ function logIn(usuarios) {
         return usuario.user == userReg.value && usuario.password == passwordReg.value;
     });
     // Si coinciden los datos de user y password devolver html, de lo cotrario, mensaje "ups!..."
-    encontrarUser ? window.location.href = "./index.html" : mensajeLogin.innerHTML = "Ups! Usuario no existente. Regístrate para ingresar.";
+    !encontrarUser 
+    ? (window.location.href = "./pages/registro.html") 
+    : (window.location.href = "./index.html");
 }
 //Recuperar datos
 function recuperarLS() {

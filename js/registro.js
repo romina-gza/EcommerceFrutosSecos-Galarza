@@ -48,4 +48,4 @@ btnReg.addEventListener('click', (e)=>{
     guardarEnLocalStorage(usuarios);    // guardado en el Local Storage -
     limpiarInputs();    // limpia las entradas -
     window.location.href = "../index.html";    // y envia al usuario a la hoja index.html (pagina principal). 
-}) 
+})    

@@ -294,6 +294,22 @@ body {
             @include display-flex(row, space-around, center);
             flex-wrap: wrap;
             grid-column: 2/5;
+            .not-found {
+                @include display-flex(column,space-around,center);
+                h3 {
+                    margin-bottom: 2rem;
+                }
+                .btn-show-all {
+                    border: none;
+                    background-color: #41c36f;
+                    padding: 1.2rem;
+                    border-radius: 5px;
+                    box-shadow: 1.5px 1.5px 2.8px #0000006b;
+                    color: white;
+                    cursor: pointer;
+                    font-weight: 600;
+                }
+            }
             .container{
                 width: 23rem;
                 height: auto;
@@ -323,20 +339,41 @@ body {
                     
                     div{
                         @include display-flex(row, flex-start, center);
-                        input {
-                            max-width: 12rem;
-                            height: 2.6rem;
+                        margin-top: .3rem;
+                        .btn-less-num-add input {
+                            width: 3.5rem;
+                            height: 3.5rem;
+                            border: none;
+                            border-radius: 5px;
+                        }
+                        .num {
+                            text-align: center;
+                        }
+                        .less , .add {
+                            background-color: #76c893b5;
+                            cursor: pointer;
+                        }
+                        .less:hover {
+                            color: white;
+                            background-color: rgb(207, 0, 0);
+                        }
+                        .add:hover {
+                            color: white;
+                            background-color: #13b94d;
                         }
                         button {
                             color: #41c36f;
                             background-color: #fff;
-                            width: 2.3rem;
-                            height: 2.3rem;
+                            width: auto;
+                            height: 3.5rem;
                             margin-left: 1rem;
+                            margin-top: 0.3rem;
                             padding: 1.3rem;
                             border-radius: 5px;
-                            border: 1px solid #000;
+                            border: none;
+                            box-shadow: 2.2px 2px 4px 1.11px #bbbbbb;
                             @include display-flex(row, center, center);
+                            cursor: pointer;
                         }
                         button:active{
                             background-color: #41c36f;

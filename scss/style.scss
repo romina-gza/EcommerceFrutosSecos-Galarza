@@ -6,7 +6,8 @@
 @import "./layout/mq-mobile";
 //Desktop
 @import "./layout/md-desktop";
-
+// barra para navegar
 @import "./components/navbar";
 @import "./components/registro";
+@import "./components/shop.scss";
 @import "./layout/principal";
