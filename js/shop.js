@@ -1,4 +1,4 @@
-const cerrarCarrito = document.getElementById('btn-cerrar-carrito'),
+/* const cerrarCarrito = document.getElementById('btn-cerrar-carrito'),
     sectionCarrito = document.getElementById('section-carrito'),
     boxCarrito = document.getElementById('box-carrito'),
     carritoContent = document.getElementById('carrito-content'),
@@ -61,10 +61,10 @@ function crearMiniTarget(arr){
     function guardarEnArr(arr){
         productAdded.push(arr);
     }
-
+ */
       /* Caracteristica: cuando se haga click *se buscará el id del boton que se clickeo, **se filtrara en todos los productos
 el id y ***luego se guardara en un array. ****Por ultimo se creara un pequeño contenedor html en el carrito con el array donde se guardan todos los productos que fueron clickeados */
-    for(let i=0; i < agregarAcarrito.length; i++) {
+/*     for(let i=0; i < agregarAcarrito.length; i++) {
         agregarAcarrito[i].addEventListener("click", function() 
         {
             let resp = this.id; // *
@@ -77,21 +77,22 @@ el id y ***luego se guardara en un array. ****Por ultimo se creara un pequeño c
     } 
 
     // botones de crearTarget de productos.
-for(let i=0; i < btnLess.length; i++) {
+let testeo23 = () => {for(let i=0; i < btnLess.length; i++) {
     btnLess[i].addEventListener('click', ()=>{
         if (inputNum[i].value > 1){
             inputNum[i].value = parseInt(inputNum[i].value) - 1;
         }
     })
 } 
-
-for(let i=0; i < btnAdd.length; i++) {
+}
+testeo23()
+let testeo24 = () => {for(let i=0; i < btnAdd.length; i++) {
     btnAdd[i].addEventListener('click', ()=>{
         inputNum[i].value = parseInt(inputNum[i].value)+1;
     })
-}
-
-
+}}
+testeo24()
+ */
 /* function filtrarProductosID(filtro) {
     let filtrar = productList.filter((el)=>{
         return el.id.includes(filtro);
@@ -103,7 +104,7 @@ for(let i=0; i < btnAdd.length; i++) {
 
   /* Caracteristica: cuando se haga click *se buscará el id del boton que se clickeo, **se filtrara en todos los productos
 el id y ***luego se guardara en un array. ****Por ultimo se creara un pequeño contenedor html en el carrito con el array donde se guardan todos los productos que fueron clickeados */
-for(let i=0; i < agregarAcarrito.length; i++) {
+/* for(let i=0; i < agregarAcarrito.length; i++) {
     agregarAcarrito[i].addEventListener("click", function() 
     {
         let resp = this.id; // *
@@ -113,7 +114,7 @@ for(let i=0; i < agregarAcarrito.length; i++) {
         crearMiniTarget(productAdded) // ****
         console.log(filtrarProductosID(this.id))
     }); 
-}  
+}   */
 
 // botones de crearTarget de productos.
 

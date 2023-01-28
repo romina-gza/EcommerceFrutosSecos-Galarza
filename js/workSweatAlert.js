@@ -1,0 +1,18 @@
+Swal.fire({
+    html: 'Al navegar en esta página <a href="#"><b>acepta nuestros términos y condiciones</b></a>.',
+    confirmButtonText: 'Acepto',
+    icon: 'info',
+    width: 400,
+    grow: 'row',
+    padding: '1rem',
+   // backdrop: false,
+    toast: true,
+    position:'bottom',
+   // allowOutsideClick: false,
+    allowEscapeKey: false,
+    stopKeydownPropagation: false,
+    showConfirmButton: true,
+    showCancelButton: false,
+    showCloseButton: false,
+    closeButtonAriaLabel: 'Cerrar esta Alerta',
+})
