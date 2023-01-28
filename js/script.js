@@ -58,42 +58,10 @@ function EnvioADomicilio(cp, localidad, precio) {
 } 
 */
 
-    // Crea cada "card" de cada producto 
-    function crearTarget(arr) {
-        console.log(arr)
-        let html;
-        cajaProductos.innerHTML = "";
-        // si el producto que busca no existe devuleve el h3 y su contenido.
-      /*       if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
-                cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
-            } */
-        for (const producto of arr) {
-            const {id, name, precio, marca, gramos, img} = producto;
-            html = 
-            `<div class="container">
-                <div class="img-card">
-                    <img src="./assets/img-productos/${img}">
-                </div>
-                    <div class="texto">
-                        <p class="name-card">${name} - ${marca}</p>
-                        <p>${gramos}gr/mililitros</p>
-                        <span class="precio"><strong>$ ${precio}</strong></span>
-                        <div>
-                            <div class="btn-less-num-add">
-                                <input class="less" id="less" type="button" value="-">
-                                <input class="num" id="num" type="number" min="1" value="1">
-                                <input class="add" id="add" type="button" value="+">
-                            </div>
-                            <button class="boton" id="${id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
-                        </div>
-                    </div>
-            </div>`;
-            cajaProductos.innerHTML += html;
-            
-        }
-    }
-    
-    let productAdded = [];
+// crearTarget Crea cada "card" de cada producto 
+
+
+let productAdded = [];
 
 // Target de producto dentro del carrito
 function crearMiniTarget(arr){
@@ -139,16 +107,6 @@ async function firstAPI(){
     console.log(marcaAll)
     console.log(datos[0].marca)
     crearTarget(datos)
-    function filtrarProductos(filtro) {
-        let filtrar = datos.filter((el)=>{
-            return el.name.includes(filtro);
-        });
-        return filtrar;
-    }
-    const btnLess = document.querySelectorAll('.less'),
-    inputNum = document.querySelectorAll('.num'), 
-    btnAdd = document.querySelectorAll('.add');
-const agregarAcarrito = document.querySelectorAll('.boton'); 
 
     /*  const filtrarCheck = () => {
         let filtrosParaCheckear = [checkPiwen, checkNutsgo , checkSarmiento, checkAlifrut];
@@ -175,33 +133,7 @@ const agregarAcarrito = document.querySelectorAll('.boton');
         
     })
 
-    console.log(btnAdd)
-    console.log(inputNum)
-    console.log(agregarAcarrito)
 console.log(datos)
-    
-    console.log(btnLess)
-    /* Caracteristica: Cuando se haga click en el boton - le restará un valor de la entrada. El valor de entrada minimo es 1, por lo que no se le puede restar a 1. */
-    //let testeo23 = () => {
-        for(let i=0; i < btnLess.length; i++) {
-            btnLess[i].addEventListener('click', ()=>{
-                if (inputNum[i].value > 1){
-                    inputNum[i].value = parseInt(inputNum[i].value) - 1;
-                }
-            })
-        } 
-    //}
-    //testeo23()
-    /* Caracteristica: Cuando se haga click en el boton + le agregará un valor de la entrada.*/
-    //let testeo24 = () => {
-        for(let i=0; i < btnAdd.length; i++) {
-            btnAdd[i].addEventListener('click', ()=>{
-                inputNum[i].value = parseInt(inputNum[i].value)+1;
-                console.log('FUNCIONA??')
-            })
-        }
-    //}
-    //testeo24()
 
     function filtrarProductosID(filtro) {
         let filtrar = datos.filter((el)=>{
@@ -209,20 +141,77 @@ console.log(datos)
         });
         return filtrar;
     }
+    // ------------>
+    function crearTarget(arr) {
+        console.log(arr)
+        let html;
+        cajaProductos.innerHTML = "";
+        for (const producto of arr) {
+            const {id, name, precio, marca, gramos, img} = producto;
+            html = 
+            `<div class="container">
+                <div class="img-card">
+                    <img src="./assets/img-productos/${img}">
+                </div>
+                    <div class="texto">
+                        <p class="name-card">${name} - ${marca}</p>
+                        <p>${gramos}gr/mililitros</p>
+                        <span class="precio"><strong>$ ${precio}</strong></span>
+                        <div>
+                            <div class="btn-less-num-add">
+                                <input class="less" id="less" type="button" value="-">
+                                <input class="num" id="num" type="number" min="1" value="1">
+                                <input class="add" id="add" type="button" value="+">
+                            </div>
+                            <button class="boton" id="${id}" value="Comprar"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+            </div>`;
+            cajaProductos.innerHTML += html;
+            
+        }
+        // vuelvo a hacer el querySelector y vuelvo a agregar eventos. Ahora por más que filtremos, agrega.
+    
+        const btnLess = document.querySelectorAll('.less'),
+        inputNum = document.querySelectorAll('.num'),
+        btnAdd = document.querySelectorAll('.add');
+        const agregarAcarrito = document.querySelectorAll('.boton'); 
+    
+            for (let i = 0; i < btnAdd.length; i++) {
+                btnAdd[i].addEventListener('click', () => {
+                    inputNum[i].value = parseInt(inputNum[i].value) + 1;
+                    console.log('FUNCIONA??')
+                })
+            }
+            for(let i=0; i < btnLess.length; i++) {
+                btnLess[i].addEventListener('click', ()=>{
+                    if (inputNum[i].value > 1){
+                        inputNum[i].value = parseInt(inputNum[i].value) - 1;
+                    }
+                })
+            }
+             /* Caracteristica: cuando se haga click *se buscará el id del boton que se clickeo, **se filtrara en todos los productos
+            el id y ***luego se guardara en un array. ****Por ultimo se creara un pequeño contenedor html en el carrito con el array donde se guardan todos los productos que fueron clickeados */
+            for(let i=0; i < agregarAcarrito.length; i++) {
+                agregarAcarrito[i].addEventListener("click", function() 
+                {
+                    let resp = this.id; // *
+                    console.log(resp)
+                    filtrarProductosID(this.id); // **
+                    guardarEnArr(filtrarProductosID(this.id)) // *** 
+                    crearMiniTarget(productAdded) // ****
+                    console.log(filtrarProductosID(this.id))
+                }); 
+            } 
+    }
+    // <------------
 
-    /* Caracteristica: cuando se haga click *se buscará el id del boton que se clickeo, **se filtrara en todos los productos
-    el id y ***luego se guardara en un array. ****Por ultimo se creara un pequeño contenedor html en el carrito con el array donde se guardan todos los productos que fueron clickeados */
-    for(let i=0; i < agregarAcarrito.length; i++) {
-        agregarAcarrito[i].addEventListener("click", function() 
-        {
-            let resp = this.id; // *
-            console.log(resp)
-            filtrarProductosID(this.id); // **
-            guardarEnArr(filtrarProductosID(this.id)) // *** 
-            crearMiniTarget(productAdded) // ****
-            console.log(filtrarProductosID(this.id))
-        }); 
-    } 
+function filtrarProductos(filtro) {
+    let filtrar = datos.filter((el)=>{
+        return el.name.includes(filtro);
+    });
+    return filtrar;
+}
 
 // otros de shop.js
     // Carcateristica: Cuando el usuario escribe un producto en la entrada se busca el valor, se filtra y se crea el card del producto.
@@ -232,6 +221,7 @@ console.log(datos)
         let filtro = filtrarProductos(buscarProducto.value.toLowerCase());
         console.log(filtro);
         crearTarget(filtro); 
+        // si el producto que busca no existe devuleve el h3 y su contenido.
         if (filtrarProductos(buscarProducto.value.toLowerCase()) == ""){
             cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
         }

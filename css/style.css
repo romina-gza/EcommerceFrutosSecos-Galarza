@@ -55,8 +55,10 @@ body header {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding-right: 2rem; }
+        padding-right: 2rem;
+        cursor: pointer; }
         body header nav .box-search button i {
+          cursor: pointer;
           font-size: 1.4rem;
           padding: 0 0.5rem 0 0; }
       body header nav .box-search button:hover {
@@ -73,7 +75,8 @@ body header {
       body header nav .icons li a i {
         color: #003049;
         font-size: 2.3rem;
-        padding-left: 2rem; }
+        padding-left: 2rem;
+        cursor: pointer; }
       body header nav .icons li a i:hover {
         color: white; }
 
@@ -183,7 +186,13 @@ body header {
       flex-direction: row;
       justify-content: space-between;
       align-items: center; }
-      .section-carrito .box-carrito .second-box i, .section-carrito .box-carrito .second-box h3 {
+      .section-carrito .box-carrito .second-box .fa-cart-shopping:last-of-type {
+        cursor: auto; }
+      .section-carrito .box-carrito .second-box i:last-of-type {
+        cursor: pointer;
+        padding: 1rem;
+        font-size: 1.8rem; }
+      .section-carrito .box-carrito .second-box h3 {
         padding: 1rem;
         font-size: 1.8rem; }
       .section-carrito .box-carrito .second-box .btn-cerrar-carrito {

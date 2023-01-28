@@ -21,7 +21,15 @@
         opacity: 0;
         .second-box {
             @include display-flex(row, space-between, center);
-            i, h3 {
+            .fa-cart-shopping:last-of-type {
+                cursor: auto;
+            }
+            i:last-of-type {
+                cursor: pointer;
+                padding: 1rem;
+                font-size: 1.8rem;
+            }
+            h3 {
                 padding: 1rem;
                 font-size: 1.8rem;
             }

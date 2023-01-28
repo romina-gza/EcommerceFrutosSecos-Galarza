@@ -40,7 +40,9 @@ body {
                     background: rgba(0, 0, 0, 0);
                     @include display-flex(row, center, center);
                     padding-right: 2rem;
+                    cursor: pointer;
                     i {
+                        cursor: pointer;
                         font-size: 1.4rem;
                         padding: 0 0.5rem 0 0;
                     }
@@ -62,6 +64,7 @@ body {
                             color: $color-secundario;
                             font-size: 2.3rem;
                             padding-left: 2rem ;
+                            cursor: pointer;
                         }
                         i:hover {
                             color: white;
