@@ -270,7 +270,7 @@ body {
                         }
                     }
                 }
-                #btn-sin-filtros {
+                .btn-sin-filtros {
                     width: 15rem;
                     height: 3rem;
                     font-weight: 600;
@@ -279,6 +279,7 @@ body {
                     background-color: #5de78ec9;
                     border: none;
                     box-shadow: 1.5px 1.5px 2.8px #0000006b;
+                    cursor: pointer;
                 }
                 h3 {
                     font-size: 1.5rem;

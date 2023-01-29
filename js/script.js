@@ -6,12 +6,15 @@ const buscarProducto = document.querySelector('#search-input'),
     checkNutsgo = document.getElementById('nuttsGo'),
     checkSarmiento = document.getElementById('sarmiento'),
     checkAlifrut = document.getElementById('alifrut'),
+    btnSinFiltros = document.getElementById('btn-sin-filtros')
+    precioDesde = document.getElementById('precio-desde'),
+    precioHasta = document.getElementById('precio-hasta')
     // boton para mostrar todos los productos 
     btnShowAll = document.getElementById('btn-show-all');
 
-const boxChecks = document.querySelectorAll('input[type="checkbox"]'); 
+const boxChecks = document.querySelectorAll('input[type="radio"]'); 
 
-//Funcion Constructora
+//Funcion Constructora pre entregas pasadas ¡IGNORAR!
 const productList = []; // Lista de productos.
 function AddProductList(name, marca, precio, gramos, descripcion, img) {
     this.id = `LA${productList.length + 1}`;
@@ -27,39 +30,6 @@ function AddProductList(name, marca, precio, gramos, descripcion, img) {
         //cálculo para el carrito - precio por cantidad ingresa por el usuario.
     };
 }
-
-/* objeto para testeos y usos futuros - ¡¡IGNORAR!!
-//Objeto 
-const codigoPostal = [
-    {cp: 5513, localidad: 'COQUIMBITO'},
-    {cp: 5561, localidad: 'CORDON DEL PLATA'},
-    {cp: 5613, localidad: 'CORONEL BELTRAN'},
-    {cp: 5519, localidad: 'CORONEL DORREGO'},
-    {cp: 5590, localidad: 'CORRAL DE CUERO'},
-    {cp: 5632, localidad: 'COMPUERTAS NEGRAS'},
-    {cp: 5500, localidad: 'CIUDAD DE MENDOZA'}
-];
-//crear F.Constructora en proceso
-function EnvioADomicilio(cp, localidad, precio) {
-    this.cp = cp;
-    this.localidad = localidad.toUpperCase;
-    this.precio = precio;
- //método
-    this.costoEnvio = (localidad)=>{
-        switch (localidad) {
-            case value:
-                
-                break;
-        
-            default:
-                break;
-        }
-    };
-} 
-*/
-
-// crearTarget Crea cada "card" de cada producto 
-
 
 let productAdded = [];
 
@@ -99,25 +69,19 @@ async function firstAPI(){
     const datos = await response.json();
 
     //console.log(marcaAll)
-    /* datos.forEach(datosP => {
-        //  console.log( datosP.marca);
-    }) */
     console.log(datos);
     const marcaAll = datos.marca;
     console.log(marcaAll)
     console.log(datos[0].marca)
     crearTarget(datos)
 
-    /*  const filtrarCheck = () => {
-        let filtrosParaCheckear = [checkPiwen, checkNutsgo , checkSarmiento, checkAlifrut];
-         let proceso = filtrosParaCheckear.forEach(element => {
-            let marcas = datos.forEach(elemento => elemento.marca);
-            if (element.checked == marcas){
-                console.log('Funciona')
-            } else ('no funciona')
-        });
-    }; */
 
+    function filtrarProductosMarca(filtro) {
+        let filtrar = datos.filter((el)=>{
+            return el.marca.includes(filtro);
+        });
+        return filtrar;
+    }
 
     boxChecks.forEach(boxCh => {
         boxCh.addEventListener('change', ()=>{
@@ -128,12 +92,11 @@ async function firstAPI(){
                 let mostrar = filtrarProductosMarca(encuentra);
                 crearTarget(mostrar);
                 console.log(mostrar)
+                if (mostrar == "") {cajaProductos.innerHTML = "<h3>Lo sentimos, no hay stock de esta marca.</h3>"};
             } 
         })           
         
     })
-
-console.log(datos)
 
     function filtrarProductosID(filtro) {
         let filtrar = datos.filter((el)=>{
@@ -141,9 +104,11 @@ console.log(datos)
         });
         return filtrar;
     }
+
+
+    // crearTarget Crea cada "card" de cada producto 
     // ------------>
     function crearTarget(arr) {
-        console.log(arr)
         let html;
         cajaProductos.innerHTML = "";
         for (const producto of arr) {
@@ -206,14 +171,13 @@ console.log(datos)
     }
     // <------------
 
-function filtrarProductos(filtro) {
-    let filtrar = datos.filter((el)=>{
-        return el.name.includes(filtro);
-    });
-    return filtrar;
-}
+    function filtrarProductos(filtro) {
+        let filtrar = datos.filter((el)=>{
+            return el.name.includes(filtro);
+        });
+        return filtrar;
+    }
 
-// otros de shop.js
     // Carcateristica: Cuando el usuario escribe un producto en la entrada se busca el valor, se filtra y se crea el card del producto.
     // Si la busqueda no devuelve nada, entonces devuelve un h3.
     searchBoton.addEventListener('click', (e)=>{
@@ -226,72 +190,19 @@ function filtrarProductos(filtro) {
             cajaProductos.innerHTML = "<h3>Lo siento no hay stock. Busca otro producto.</h3>";
         }
     })
-    
 
-    function filtrarProductosMarca(filtro) {
-        let filtrar = datos.filter((el)=>{
-            return el.marca.includes(filtro);
-        });
-        return filtrar;
+    function unselect(){
+        boxChecks.forEach((radioCheck) => radioCheck.checked = false);
     }
+
+    /* Caracteristica: Cuando haga click en el boton se eliminaran todos los filtros del lado izquierdo de la pantalla */
+    btnSinFiltros.addEventListener('click', ()=>{
+        unselect();
+        crearTarget(datos);
+    })
 
 } 
 
 firstAPI();
-
-
-const cerrarCarrito = document.getElementById('btn-cerrar-carrito'),
-    sectionCarrito = document.getElementById('section-carrito'),
-    boxCarrito = document.getElementById('box-carrito'),
-    carritoContent = document.getElementById('carrito-content'),
-    btnVaciarCarrito = document.getElementById('btn-vaciar-carrito'),
-    btnAbrirCarrito = document.getElementById('abrir-carrito'),
-    // queryall
-    inputCantProd = document.getElementById('cantidadProd');
-
-
-btnAbrirCarrito.addEventListener('click', ()=>{
-    sectionCarrito.classList.add('active');
-    boxCarrito.classList.add('active');
-})
-
-cerrarCarrito.addEventListener('click', ()=>{
-    sectionCarrito.classList.remove('active');
-    boxCarrito.classList.remove('active');
-})
-/* 
-let productAdded = [];
-
-// Target de producto dentro del carrito
-function crearMiniTarget(arr){
-    let littleHtml;
-    carritoContent.innerHTML = "";
-
-    for (const producto of arr) {
-        littleHtml = 
-    `<div class="box-product-added">
-        <img src="./assets/img-productos/${producto[0].img}">
-        <div class="texto-carrito">
-        <p>${producto[0].name} - ${producto[0].marca}</p>
-        <p>${producto[0].gramos} gr/mililitros</p>
-        </div>
-        <div class="btn-less-num-add">
-            <input class="less" id="less" type="button" value="-">
-            <input class="num" id="num" type="number" min="1" value="1">
-            <input class="add" id="add" type="button" value="+">
-        </div>
-        <span>$ ${producto[0].precio}</span>
-        <i class="fa-solid fa-trash-can"></i>
-    </div>`;
-    carritoContent.innerHTML += littleHtml;
-    }
-}
-
-   
-    function guardarEnArr(arr){
-        productAdded.push(arr);
-    }
- */
-    // botones de crearTarget de productos.
 
 
